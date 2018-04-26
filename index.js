@@ -1,13 +1,19 @@
-var http = require('http');
+const app = require('express')();
 
-var server = http.createServer(function(request, response) {
+const port = process.env.PORT || 8000;
 
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("Super Cooooooooooool!");
-
+app.get('/', (req, res) => {
+  res.status(200).json('welcome to root');
 });
 
-var port = process.env.PORT || 1337;
-server.listen(port);
+app.get('/foo', (req, res) => {
+  res.status(200).json('welcome to foo');
+});
 
-console.log("Server running at http://localhost:%d", port);
+app.get('/bar', (req, res) => {
+  res.status(200).json('welcome to bar');
+});
+
+app.listen(port, () => console.log('Magic happens on port', port));
+
+module.exports.app = app;
