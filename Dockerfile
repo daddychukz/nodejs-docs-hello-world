@@ -8,6 +8,6 @@ RUN npm install
 
 COPY index.js /var/www/
 
-EXPOSE 1337
+EXPOSE 8000
 
-CMD npm start
+CMD ["npm", "start"]
